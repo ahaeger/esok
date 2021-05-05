@@ -10,7 +10,7 @@ from setuptools import setup, find_packages
 NAME = "esok"
 PACKAGES = find_packages(where="src")
 META_PATH = os.path.join("src", "esok", "__init__.py")
-KEYWORDS = ["elasticsearch", "cli"]
+KEYWORDS = ["elasticsearch", "es", "cli"]
 CLASSIFIERS = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
@@ -25,7 +25,12 @@ CLASSIFIERS = [
     "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
 ]
-INSTALL_REQUIRES = []
+INSTALL_REQUIRES = [
+    "click            >= 7.1.2, < 8",
+    "click-didyoumean >= 0.0.3, < 1",
+    "elasticsearch    >= 6.8.1, < 7",
+    "PyYAML           >= 5.1.0, < 6"
+]
 
 ###################################################################
 
@@ -79,5 +84,10 @@ if __name__ == "__main__":
         include_package_data=True,
         classifiers=CLASSIFIERS,
         install_requires=INSTALL_REQUIRES,
+        entry_points={
+            "console_scripts": [
+                "esok=esok.esok:entry_point"
+            ]
+        },
         options={"bdist_wheel": {"universal": "1"}},
     )
