@@ -23,6 +23,7 @@ CLASSIFIERS = [
     "Programming Language :: Python :: 3.6",
     "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
+    "Topic :: Utilities",
 ]
 INSTALL_REQUIRES = [
     "click            >= 7.1.2, < 8",
@@ -30,6 +31,7 @@ INSTALL_REQUIRES = [
     "elasticsearch    >= 6.8.1, < 7",
     "PyYAML           >= 5.1.0, < 6",
 ]
+PYTHON_REQUIRES = [">= 3.6, < 4"]
 
 ###################################################################
 
