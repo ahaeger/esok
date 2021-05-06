@@ -6,7 +6,6 @@ from esok.log.ConsoleFormatter import ConsoleFormatter
 
 
 class ConsoleHandler(logging.Handler):
-
     def __init__(self, level=logging.NOTSET):
         """
         A log handler that is tuned for logging directly to the console, which
@@ -14,7 +13,8 @@ class ConsoleHandler(logging.Handler):
 
         :param level: The initial log level
         """
-        super(ConsoleHandler, self).__init__(logging.NOTSET)  # Initialize so we can set formatter
+        # Initialize so we can set formatter
+        super(ConsoleHandler, self).__init__(logging.NOTSET)
         self.setFormatter(ConsoleFormatter())
         self.setLevel(level)
 
@@ -23,7 +23,7 @@ class ConsoleHandler(logging.Handler):
         try:
             super(ConsoleHandler, self).setLevel(level)
         except Exception:
-            raise BadParameter(u'Verbosity level not recognized.')
+            raise BadParameter("Verbosity level not recognized.")
 
     def emit(self, record):
         # noinspection PyBroadException
@@ -39,7 +39,7 @@ class ConsoleHandler(logging.Handler):
         if isinstance(level, str):
             level = level.upper()
 
-            if level == u'EXCEPTION':
+            if level == "EXCEPTION":
                 level = logging.ERROR
                 self.formatter.show_traceback = True
             else:

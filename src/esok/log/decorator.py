@@ -4,7 +4,7 @@ import click
 
 from esok.log.ConsoleHandler import ConsoleHandler
 
-_META_HANDLER_KEY = __name__ + '.logHandler'
+_META_HANDLER_KEY = __name__ + ".logHandler"
 
 
 def verbosity(logger, *names, **kwargs):
@@ -21,16 +21,19 @@ def verbosity(logger, *names, **kwargs):
         logger = logging.getLogger(logger)
 
     if not names:
-        names = [u'--verbosity']
+        names = [u"--verbosity"]
 
-    kwargs.setdefault(u'default', u'WARNING')
-    kwargs.setdefault(u'metavar', u'LVL')
-    kwargs.setdefault(u'help', u'Log messages >= LVL will be displayed in console. LVL is one of CRITICAL, EXCEPTION, '
-                               u'ERROR, WARNING (default), INFO or DEBUG. EXCEPTION == ERROR, but includes stack '
-                               u'traces.')
-    kwargs.setdefault(u'expose_value', False)
-    kwargs.setdefault(u'is_eager', True)
-    kwargs.setdefault(u'show_default', True)
+    kwargs.setdefault(u"default", u"WARNING")
+    kwargs.setdefault(u"metavar", u"LVL")
+    kwargs.setdefault(
+        u"help",
+        u"Log messages >= LVL will be displayed in console. LVL is one of CRITICAL, EXCEPTION, "
+        u"ERROR, WARNING (default), INFO or DEBUG. EXCEPTION == ERROR, but includes stack "
+        u"traces.",
+    )
+    kwargs.setdefault(u"expose_value", False)
+    kwargs.setdefault(u"is_eager", True)
+    kwargs.setdefault(u"show_default", True)
 
     handler = ConsoleHandler(logging.WARNING)
 
@@ -60,7 +63,7 @@ def error(ctx, _, enabled):
 
 
 def exception(ctx, _, enabled):
-    _set_level(ctx, enabled, 'EXCEPTION')
+    _set_level(ctx, enabled, "EXCEPTION")
 
 
 def critical(ctx, _, enabled):

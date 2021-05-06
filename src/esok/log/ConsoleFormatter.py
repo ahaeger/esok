@@ -21,13 +21,12 @@ class ConsoleFormatter(logging.Formatter):
             level = record.levelname.capitalize()
             level_color = self.color_for_level(record.levelno)
 
-            prefix = click.style(u'[{}] '.format(level),
-                                 fg=level_color)
+            prefix = click.style(u"[{}] ".format(level), fg=level_color)
             msg = prefix + msg
 
         if self._traceback and record.exc_info:
             trace = self.formatException(record.exc_info)
-            msg = msg + '\n' + trace
+            msg = msg + "\n" + trace
 
         return msg
 
@@ -38,10 +37,10 @@ class ConsoleFormatter(logging.Formatter):
     @staticmethod
     def color_for_level(level_number):
         if level_number >= logging.ERROR:
-            return 'red'
+            return "red"
         elif level_number >= logging.WARNING:
-            return 'yellow'
+            return "yellow"
         elif level_number >= logging.INFO:
-            return 'white'
+            return "white"
         else:
-            return 'blue'
+            return "blue"

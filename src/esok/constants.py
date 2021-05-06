@@ -4,11 +4,11 @@ from os import path
 # Paths                 #
 #########################
 
-APP_NAME = 'esok'
-APP_CONFIG_BASENAME = '{}.ini'.format(APP_NAME)
+APP_NAME = "esok"
+APP_CONFIG_BASENAME = "{}.ini".format(APP_NAME)
 
 ROOT_DIR = path.dirname(path.realpath(__file__))
-RESOURCE_DIR = path.join(ROOT_DIR, 'resources')
+RESOURCE_DIR = path.join(ROOT_DIR, "resources")
 DEFAULT_CONFIG = path.join(RESOURCE_DIR, APP_CONFIG_BASENAME)
 
 
