@@ -8,6 +8,9 @@ from setuptools import find_packages, setup
 
 NAME = "esok"
 PACKAGES = find_packages(where="src")
+PACKAGE_DATA = {"esok": ["esok/resources/*"]}
+INCLUDE_PACKAGE_DATA = True
+ENTRY_POINTS = {"console_scripts": ["esok=esok.esok:entry_point"]}
 META_PATH = os.path.join("src", "esok", "__init__.py")
 KEYWORDS = ["elasticsearch", "es", "cli"]
 CLASSIFIERS = [
@@ -23,6 +26,7 @@ CLASSIFIERS = [
     "Programming Language :: Python :: 3.6",
     "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
+    "Topic :: Utilities",
 ]
 INSTALL_REQUIRES = [
     "click            >= 7.1.2, < 8",
@@ -30,6 +34,7 @@ INSTALL_REQUIRES = [
     "elasticsearch    >= 6.8.1, < 7",
     "PyYAML           >= 5.1.0, < 6",
 ]
+PYTHON_REQUIRES = [">= 3.6, < 4"]
 
 ###################################################################
 
@@ -76,10 +81,10 @@ if __name__ == "__main__":
         long_description_content_type="text/markdown",
         packages=PACKAGES,
         package_dir={"": "src"},
-        package_data={"esok": ["esok/resources/*"]},
-        include_package_data=True,
+        package_data=PACKAGE_DATA,
+        include_package_data=INCLUDE_PACKAGE_DATA,
         classifiers=CLASSIFIERS,
         install_requires=INSTALL_REQUIRES,
-        entry_points={"console_scripts": ["esok=esok.esok:entry_point"]},
+        entry_points=ENTRY_POINTS,
         options={"bdist_wheel": {"universal": "1"}},
     )
