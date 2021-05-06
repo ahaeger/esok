@@ -73,11 +73,11 @@ def test_cluster_with_missing_connection(runner):
 def test_cluster_with_predefined_connections(user_config_file, runner):
     user_config_file.write_text(
         """
-    [cluster:awesome-cluster]
-    eu = 192.168.0.1
-    us = some.es.cluster.example.com
-    ae = east-asia-host
-    """
+        [cluster:awesome-cluster]
+        eu = 192.168.0.1
+        us = some.es.cluster.example.com
+        ae = east-asia-host
+        """
     )
     clients, command = _attach_sub_command(esok)
 
@@ -97,11 +97,11 @@ def test_cluster_with_predefined_connections(user_config_file, runner):
 def test_cluster_with_predefined_connections_and_site_option(user_config_file, runner):
     user_config_file.write_text(
         """
-    [cluster:awesome-cluster]
-    eu = 192.168.0.1
-    us = some.es.cluster.example.com
-    ap = asia-host
-    """
+        [cluster:awesome-cluster]
+        eu = 192.168.0.1
+        us = some.es.cluster.example.com
+        ap = asia-host
+        """
     )
     clients, command = _attach_sub_command(esok)
 
@@ -117,10 +117,10 @@ def test_cluster_with_predefined_connections_and_missing_site_option(
 ):
     user_config_file.write_text(
         """
-    [cluster:awesome-cluster]
-    us = some.es.cluster.example.com
-    ap = asia-host
-    """
+        [cluster:awesome-cluster]
+        us = some.es.cluster.example.com
+        ap = asia-host
+        """
     )
     clients, command = _attach_sub_command(esok)
 
@@ -134,9 +134,9 @@ def test_cluster_with_predefined_connections_and_missing_site_option(
 def test_cluster_with_invalid_pattern_config(user_config_file, runner):
     user_config_file.write_text(
         """
-    [general]
-    cluster_hostname_pattern = my-cluster
-    """
+        [general]
+        cluster_hostname_pattern = my-cluster
+        """
     )
     clients, command = _attach_sub_command(esok)
 
@@ -152,9 +152,9 @@ def test_cluster_with_invalid_pattern_config(user_config_file, runner):
 def test_cluster_with_pattern_config_without_site(user_config_file, runner):
     user_config_file.write_text(
         """
-    [general]
-    cluster_hostname_pattern = my-{cluster}-cluster
-    """
+        [general]
+        cluster_hostname_pattern = my-{cluster}-cluster
+        """
     )
     clients, command = _attach_sub_command(esok)
 
@@ -172,9 +172,9 @@ def test_cluster_with_pattern_config_and_site_option_without_site_variable(
 ):
     user_config_file.write_text(
         """
-    [general]
-    cluster_hostname_pattern = my-{cluster}-cluster
-    """
+        [general]
+        cluster_hostname_pattern = my-{cluster}-cluster
+        """
     )
     clients, command = _attach_sub_command(esok)
 
@@ -188,9 +188,9 @@ def test_cluster_with_pattern_config_and_site_option_without_site_variable(
 def test_cluster_with_pattern_config_and_missing_site(user_config_file, runner):
     user_config_file.write_text(
         """
-    [general]
-    cluster_hostname_pattern = my-{cluster}-{site}-cluster
-    """
+        [general]
+        cluster_hostname_pattern = my-{cluster}-{site}-cluster
+        """
     )
     clients, command = _attach_sub_command(esok)
 
@@ -204,10 +204,10 @@ def test_cluster_with_pattern_config_and_missing_site(user_config_file, runner):
 def test_cluster_with_pattern_config_and_default_sites(user_config_file, runner):
     user_config_file.write_text(
         """
-    [general]
-    cluster_hostname_pattern = my-{cluster}-{site}-cluster
-    cluster_pattern_default_sites = site1,site2
-    """
+        [general]
+        cluster_hostname_pattern = my-{cluster}-{site}-cluster
+        cluster_pattern_default_sites = site1,site2
+        """
     )
     clients, command = _attach_sub_command(esok)
 
@@ -230,10 +230,10 @@ def test_cluster_with_pattern_config_and_default_sites_without_site_variable(
 ):
     user_config_file.write_text(
         """
-    [general]
-    cluster_hostname_pattern = my-{cluster}-cluster
-    cluster_pattern_default_sites = site1,site2
-    """
+        [general]
+        cluster_hostname_pattern = my-{cluster}-cluster
+        cluster_pattern_default_sites = site1,site2
+        """
     )
     clients, command = _attach_sub_command(esok)
 
@@ -251,10 +251,10 @@ def test_cluster_with_pattern_config_and_default_sites_and_site_option(
 ):
     user_config_file.write_text(
         """
-    [general]
-    cluster_hostname_pattern = my-{cluster}-{site}-cluster
-    cluster_pattern_default_sites = site1,site2
-    """
+        [general]
+        cluster_hostname_pattern = my-{cluster}-{site}-cluster
+        cluster_pattern_default_sites = site1,site2
+        """
     )
     clients, command = _attach_sub_command(esok)
 
@@ -272,13 +272,13 @@ def test_cluster_with_pattern_config_predefined_connections_takes_precedence(
 ):
     user_config_file.write_text(
         """
-    [general]
-    cluster_hostname_pattern = my-{cluster}-{site}-cluster
-    cluster_pattern_default_sites = site1,site2
-    [cluster:some-cluster]
-    region2 = host1
-    region1 = host2
-    """
+        [general]
+        cluster_hostname_pattern = my-{cluster}-{site}-cluster
+        cluster_pattern_default_sites = site1,site2
+        [cluster:some-cluster]
+        region2 = host1
+        region1 = host2
+        """
     )
     clients, command = _attach_sub_command(esok)
 
@@ -295,13 +295,13 @@ def test_cluster_with_pattern_config_predefined_connections_takes_precedence(
 def test_cluster_with_pattern_config_(user_config_file, runner):
     user_config_file.write_text(
         """
-    [general]
-    cluster_hostname_pattern = my-{cluster}-{site}-cluster
-    cluster_pattern_default_sites = site1,site2
-    [cluster:some-cluster]
-    region2 = host1
-    region1 = host2
-    """
+        [general]
+        cluster_hostname_pattern = my-{cluster}-{site}-cluster
+        cluster_pattern_default_sites = site1,site2
+        [cluster:some-cluster]
+        region2 = host1
+        region1 = host2
+        """
     )
     clients, command = _attach_sub_command(esok)
 
@@ -318,12 +318,12 @@ def test_cluster_with_pattern_config_(user_config_file, runner):
 def test_default_connection_can_be_predefined_connection(user_config_file, runner):
     user_config_file.write_text(
         """
-    [general]
-    default_connection = my-cluster
-    [cluster:my-cluster]
-    eu = host1
-    us = host2
-    """
+        [general]
+        default_connection = my-cluster
+        [cluster:my-cluster]
+        eu = host1
+        us = host2
+        """
     )
     clients, command = _attach_sub_command(esok)
 
@@ -339,10 +339,10 @@ def test_cluster_with_pattern_config_and_default_sites_are_stripped_of_whitespac
 ):
     user_config_file.write_text(
         """
-    [general]
-    cluster_hostname_pattern = my-{cluster}-{site}-cluster
-    cluster_pattern_default_sites = site1, site2
-    """
+        [general]
+        cluster_hostname_pattern = my-{cluster}-{site}-cluster
+        cluster_pattern_default_sites = site1, site2
+        """
     )
     clients, command = _attach_sub_command(esok)
 
@@ -361,10 +361,10 @@ def test_cluster_with_pattern_config_and_default_sites_are_stripped_of_whitespac
 def test_include_site_should_pass_site(user_config_file, runner):
     user_config_file.write_text(
         """
-    [cluster:my-cluster]
-    eu = host1
-    us = host2
-    """
+        [cluster:my-cluster]
+        eu = host1
+        us = host2
+        """
     )
     clients = list()
 
@@ -408,11 +408,11 @@ def test_developer_boo_boo_is_captured(runner):
 def test_progress_is_printed_for_several_clients(user_config_file, runner):
     user_config_file.write_text(
         """
-    [cluster:awesome-cluster]
-    eu = 192.168.0.1
-    us = some.es.cluster.example.com
-    ae = east-asia-host
-    """
+        [cluster:awesome-cluster]
+        eu = 192.168.0.1
+        us = some.es.cluster.example.com
+        ae = east-asia-host
+        """
     )
     clients, command = _attach_sub_command(esok)
 
@@ -435,9 +435,9 @@ def test_progress_is_printed_for_several_clients(user_config_file, runner):
 def test_no_progress_is_printed_for_only_one_client(user_config_file, runner):
     user_config_file.write_text(
         """
-    [cluster:awesome-cluster]
-    eu = 192.168.0.1
-    """
+        [cluster:awesome-cluster]
+        eu = 192.168.0.1
+        """
     )
     clients, command = _attach_sub_command(esok)
 
