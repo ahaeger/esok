@@ -39,7 +39,8 @@ def _client(es_instance):
 
 @pytest.fixture
 def es_cleaned(es_instance, _client):
-    """Pass-through of es_instance, but ensures ES is cleaned on every test invocation."""
+    """Pass-through of es_instance, but ensures ES is cleaned
+    on every test invocation."""
     try:
         _client.indices.delete("_all")
     except TransportError as e:

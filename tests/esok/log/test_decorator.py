@@ -1,6 +1,6 @@
 import logging
 
-from esok.log.decorator import debug, verbose, error, exception, critical, silence
+from esok.log.decorator import critical, debug, error, exception, silence, verbose
 
 _META_HANDLER_KEY = "esok.log.decorator.logHandler"
 

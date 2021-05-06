@@ -16,7 +16,8 @@ _CONNECTIONS_KEY = "{}.connections".format(__name__)
 def connection_options(f):
     """Adds Elasticsearch connection options.
 
-    This decorator is intended to be used on a click.Group, coupled with per_connection() on a sub-command.
+    This decorator is intended to be used on a click.Group, coupled with
+    per_connection() on a sub-command.
     """
     f = click.option(
         "-t",
@@ -98,15 +99,16 @@ def per_connection(include_site=False):
         def decorator(*args, **kwargs):
             ctx = click.get_current_context().find_root()
 
-            # A bit of an ugly dependency on the ctx.obj having to be set up externally, with a dictionary structure
-            # that is assumed in this file.
+            # A bit of an ugly dependency on the ctx.obj having to be set up
+            # externally, with a dictionary structure that is assumed in this file.
             if (
                 _CONNECTIONS_KEY not in ctx.meta
                 or ctx.obj is None
                 or "config" not in ctx.obj
             ):
                 LOG.error(
-                    "Connection options mismatch. This is a bug. Would you please file a bug report? Thanks!"
+                    "Connection options mismatch. This is a bug. "
+                    "Would you please file a bug report? Thanks!"
                 )
                 sys.exit(CLI_ERROR)
 
@@ -128,13 +130,16 @@ def per_connection(include_site=False):
 
                 ok = r is None
                 if not ok:
-                    # TODO (haeger) We never end up here - because f usually throws errors.
+                    # TODO (haeger) We never end up here
+                    # Because f usually throws errors.
                     click.secho("FAIL", fg="red")
-                    break  # TODO (haeger) Make it configurable if you want to continue or not?
+                    # TODO (haeger) Make it configurable if you want to continue or not?
+                    break
                 elif len(clients) > 1:
                     click.secho("OK", fg="green")
 
-            return None  # TODO (haeger) Should this aggregate and propagate return values somehow?
+            # TODO (haeger) Should this aggregate and propagate return values somehow?
+            return None
 
         return decorator
 
@@ -184,8 +189,8 @@ def _create_clients(config):
     elif cluster_option is not None:
         if config["cluster_hostname_pattern"] is None:
             LOG.error(
-                "Neither cluster section or hostname pattern is defined for specified cluster. "
-                "Cannot create connection. Check your config file."
+                "Neither cluster section or hostname pattern is defined for specified "
+                "cluster. Cannot create connection. Check your config file."
             )
             sys.exit(USER_ERROR)
 
@@ -201,8 +206,8 @@ def _create_clients(config):
         # No connection info given, fallback to default host.
         if sites_option:
             LOG.error(
-                "--sites specified, but default connection is not a predefined connection. "
-                "Check your config file."
+                "--sites specified, but default connection is not a "
+                "predefined connection. Check your config file."
             )
             sys.exit(USER_ERROR)
         client = _make_client(default_connection, config)
@@ -232,7 +237,8 @@ def _cluster_clients(connections, cluster_option, sites_option, config):
 
 
 def _cluster_sites(connections, sites_option, cluster_option):
-    # Use specified sites if they are given, otherwise fallback to all sites in config file
+    # Use specified sites if they are given,
+    # otherwise fallback to all sites in config file
     return (
         _parse_sites(sites_option)
         if sites_option
@@ -254,8 +260,8 @@ def _patterned_hostname(config, cluster_option, sites_option):
     if sites_option is not None:
         if "{site}" not in cluster_hostname_pattern:
             LOG.error(
-                'Site option is specified, but "{site}" variable is missing in "cluster_hostname_pattern". '
-                "Check your config file."
+                'Site option is specified, but "{site}" variable is missing in '
+                '"cluster_hostname_pattern". Check your config file.'
             )
             sys.exit(USER_ERROR)
 
@@ -263,8 +269,8 @@ def _patterned_hostname(config, cluster_option, sites_option):
     else:
         if "{site}" not in cluster_hostname_pattern and default_sites is not None:
             LOG.error(
-                '"cluster_pattern_default_sites" are defined, but "{site}" variable is missing in '
-                '"cluster_hostname_pattern". Check your config file.'
+                '"cluster_pattern_default_sites" are defined, but "{site}" variable is '
+                'missing in "cluster_hostname_pattern". Check your config file.'
             )
             sys.exit(CONFIGURATION_ERROR)
 
@@ -287,9 +293,10 @@ def _patterned_hostname(config, cluster_option, sites_option):
 
     except KeyError:
         LOG.exception(
-            'Could not parse cluster hostname pattern. Pattern must include "{cluster}" variable, for usage '
-            'with --cluster option. Optionally, "{site}" can also be defined for use with either --sites or '
-            '"cluster_pattern_default_sites" configuration.'
+            "Could not parse cluster hostname pattern. Pattern must include "
+            '"{cluster}" variable, for usage with --cluster option. '
+            'Optionally, "{site}" can also be defined for use with either --sites '
+            'or "cluster_pattern_default_sites" configuration.'
         )
         sys.exit(USER_ERROR)
 
