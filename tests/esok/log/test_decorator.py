@@ -2,7 +2,7 @@ import logging
 
 from esok.log.decorator import debug, verbose, error, exception, critical, silence
 
-_META_HANDLER_KEY = 'esok.log.decorator.logHandler'
+_META_HANDLER_KEY = "esok.log.decorator.logHandler"
 
 
 def test_debug():
@@ -42,7 +42,7 @@ def test_exception():
     assert handler.level is None
 
     exception(ctx, None, True)
-    assert handler.level == 'EXCEPTION'
+    assert handler.level == "EXCEPTION"
 
 
 def test_critical():
