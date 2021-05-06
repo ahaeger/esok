@@ -29,7 +29,7 @@ INSTALL_REQUIRES = [
     "click            >= 7.1.2, < 8",
     "click-didyoumean >= 0.0.3, < 1",
     "elasticsearch    >= 6.8.1, < 7",
-    "PyYAML           >= 5.1.0, < 6"
+    "PyYAML           >= 5.1.0, < 6",
 ]
 
 ###################################################################
@@ -54,8 +54,7 @@ def find_meta(meta):
     Extract __*meta*__ from META_FILE.
     """
     meta_match = re.search(
-        r"^__{meta}__ = ['\"]([^'\"]*)['\"]".format(meta=meta),
-        META_FILE, re.M
+        r"^__{meta}__ = ['\"]([^'\"]*)['\"]".format(meta=meta), META_FILE, re.M
     )
     if meta_match:
         return meta_match.group(1)
@@ -78,16 +77,10 @@ if __name__ == "__main__":
         long_description_content_type="text/markdown",
         packages=PACKAGES,
         package_dir={"": "src"},
-        package_data={
-            "esok": ["esok/resources/*"]
-        },
+        package_data={"esok": ["esok/resources/*"]},
         include_package_data=True,
         classifiers=CLASSIFIERS,
         install_requires=INSTALL_REQUIRES,
-        entry_points={
-            "console_scripts": [
-                "esok=esok.esok:entry_point"
-            ]
-        },
+        entry_points={"console_scripts": ["esok=esok.esok:entry_point"]},
         options={"bdist_wheel": {"universal": "1"}},
     )

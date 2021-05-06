@@ -18,7 +18,7 @@ def test_filter_level_set_as_integer():
 
 
 def test_filter_level_set_as_string():
-    filter = LogLevelFilter('INFO')
+    filter = LogLevelFilter("INFO")
 
     okay_record = make_record(logging.INFO)
     is_kept = filter.filter(okay_record)
@@ -31,11 +31,11 @@ def test_filter_level_set_as_string():
 
 def test_filter_valid_level_strings():
     valid_levels = [
-        (logging.DEBUG, 'DEBUG'),
-        (logging.INFO, 'INFO'),
-        (logging.WARNING, 'WARNING'),
-        (logging.ERROR, 'ERROR'),
-        (logging.CRITICAL, 'CRITICAL')
+        (logging.DEBUG, "DEBUG"),
+        (logging.INFO, "INFO"),
+        (logging.WARNING, "WARNING"),
+        (logging.ERROR, "ERROR"),
+        (logging.CRITICAL, "CRITICAL"),
     ]
 
     for level_int, level_string in valid_levels:
@@ -47,8 +47,8 @@ def test_filter_valid_level_strings():
 
 def test_fail_invalid_level_string():
     with pytest.raises(ValueError):
-        LogLevelFilter('this is not a valid level')
+        LogLevelFilter("this is not a valid level")
 
 
 def make_record(level):
-    return logging.makeLogRecord({'levelno': level})
+    return logging.makeLogRecord({"levelno": level})
