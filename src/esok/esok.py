@@ -131,8 +131,9 @@ def esok(ctx, app_dir):
     ctx.ensure_object(dict)
     ctx.obj.update(dict(config=config, user_config_file=user_config_file))
 
-    # This group-command is invoked even without supplying sub-commands, in order to set up the app directory.
-    # But we still want to present help text if no sub-commands are provided.
+    # This group-command is invoked even without supplying sub-commands,
+    # in order to set up the app directory. But we still want to present help
+    # text if no sub-commands are provided.
     if ctx.invoked_subcommand is None:
         click.echo(ctx.get_help())
 
