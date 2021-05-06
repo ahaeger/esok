@@ -64,8 +64,9 @@ def create(client, name, mapping):
     "--remote",
     type=click.STRING,
     metavar="HOSTNAME",
-    help="Remote cluster or hostname to copy from. If no cluster with the given name is configured, the "
-    "passed value will be used as the hostname directly.",
+    help="Remote cluster or hostname to copy from. If no cluster with the "
+         "given name is configured, the passed value will be used as the "
+         "hostname directly.",
 )
 @click.option(
     "-m",
@@ -108,7 +109,8 @@ def copy(client, site, source_index, new_index, remote, skip_mapping, skip_setti
     LOG.info(json.dumps(r))
     if not ack:
         LOG.warning(
-            "Request timed out before acknowledge was received. Index might not have been created yet."
+            "Request timed out before acknowledge was received. "
+            "Index might not have been created yet."
         )
 
 
@@ -202,7 +204,8 @@ def shards(client, name, shard_count, absolute, nodes):
 
         if not replica_count.is_integer():
             click.echo(
-                "The cluster configuration and desired shards per machine resulted in {} total replicas.\n"
+                "The cluster configuration and desired shards per machine "
+                "resulted in {} total replicas.\n"
                 "This will be rounded to {} replicas in total.".format(
                     replica_count, int(replica_count)
                 )
@@ -305,8 +308,8 @@ def read(client, name, output_file, chunk_size, scroll_time):
     "-b",
     "--initial-backoff",
     type=click.INT,
-    help="Number of seconds to wait before the first retry. Any subsequent retries will be powers of "
-    "initial-backoff * 2^retry_number",
+    help="Number of seconds to wait before the first retry. Any subsequent "
+         "retries will be powers of initial-backoff * 2^retry_number",
     default=2,
     show_default=True,
 )
@@ -331,12 +334,13 @@ def write(
 ):
     """ Write to a given index.
 
-    The input file is expected to be in the "JSON-lines" format, i.e. with one valid JSON-object per row. Pass - to read
-    from stdin.
+    The input file is expected to be in the "JSON-lines" format, i.e. with one valid
+    JSON-object per row. Pass - to read from stdin.
 
-    Reserved keys include '_index', '_type', '_id' and '_source' (among others), which are all optional.
-    If '_source' is present Elasticsearch will assume that the document to index resides within it. If '_source' is
-    not present, all other non-reserved keys will be indexed.
+    Reserved keys include '_index', '_type', '_id' and '_source' (among others), which
+    are all optional. If '_source' is present Elasticsearch will assume that the
+    document to index resides within it. If '_source' is not present, all other
+    non-reserved keys will be indexed.
 
     For more details, see:
 

@@ -21,19 +21,19 @@ def verbosity(logger, *names, **kwargs):
         logger = logging.getLogger(logger)
 
     if not names:
-        names = [u"--verbosity"]
+        names = ["--verbosity"]
 
-    kwargs.setdefault(u"default", u"WARNING")
-    kwargs.setdefault(u"metavar", u"LVL")
+    kwargs.setdefault("default", "WARNING")
+    kwargs.setdefault("metavar", "LVL")
     kwargs.setdefault(
-        u"help",
-        u"Log messages >= LVL will be displayed in console. LVL is one of CRITICAL, EXCEPTION, "
-        u"ERROR, WARNING (default), INFO or DEBUG. EXCEPTION == ERROR, but includes stack "
-        u"traces.",
+        "help",
+        "Log messages >= LVL will be displayed in console. LVL is one of CRITICAL, "
+        "EXCEPTION, ERROR, WARNING (default), INFO or DEBUG. EXCEPTION == ERROR, but "
+        "includes stack traces.",
     )
-    kwargs.setdefault(u"expose_value", False)
-    kwargs.setdefault(u"is_eager", True)
-    kwargs.setdefault(u"show_default", True)
+    kwargs.setdefault("expose_value", False)
+    kwargs.setdefault("is_eager", True)
+    kwargs.setdefault("show_default", True)
 
     handler = ConsoleHandler(logging.WARNING)
 

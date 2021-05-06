@@ -73,8 +73,9 @@ def reindex():
     type=click.INT,
     default=0,
     show_default=True,
-    help='Count of slices to use. "auto" slicing is the default, but slicing >1 only works when reindexing'
-    "indices on the same cluster. If reindexing from remote (using -R) slices will be set to 1.",
+    help='Count of slices to use. "auto" slicing is the default, but slicing >1 only '
+         "works when reindexing indices on the same cluster. If reindexing from remote "
+         "(using -R) slices will be set to 1.",
 )
 @per_connection(include_site=True)
 def start(
@@ -95,15 +96,16 @@ def start(
     Use the regular connection options to reindex between indices on the same cluster.
 
     \b
-    $ esok -c target-cluster reindex start source-index target-index
+    $ esok -c target reindex start source-index target-index
 
-    Use the -R (--remote) option to reindex from a remote cluster. The remote cluster hostname is resolved in the same
-    manner as the --cluster option.
+    Use the -R (--remote) option to reindex from a remote cluster. The remote cluster
+    hostname is resolved in the same manner as the --cluster option.
 
     \b
-    $ esok -c target-cluster reindex start -R source-cluster source-index target-index
-    $ esok -c target-cluster reindex start -R source-host.example.com source-index target-index
-    $ esok -H target-host.example.com reindex start -R source-host.example.com source-index target-index
+    $ esok -c target reindex start -R source-cluster source-index target-index
+    $ esok -c target reindex start -R source.example.com source-index target-index
+    $ esok -H target.example.com reindex start -R source.example.com \\
+           source-index target-index
 
     """
     # Resolve which hostname and clients to use

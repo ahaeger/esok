@@ -15,7 +15,8 @@ def app_init(app_dir, log_dir_name="logs"):
     Initialize app directories and configurations.
 
     :param app_dir: File path to the app's directory
-    :param log_dir_name: Name of the subdirectory of ``app_dir`` in which logs should be placed
+    :param log_dir_name: Name of the subdirectory of ``app_dir``
+           in which logs should be placed
     """
     _init_dirs(app_dir, log_dir_name)
     _init_logging(path.join(app_dir, log_dir_name))
@@ -43,7 +44,8 @@ def _init_logging(log_dir):
     Load logging configuration.
 
     :param app_dir: File path to the app's directory
-    :param log_dir_name: Name of the subdirectory of ``app_dir`` in which logs should be placed
+    :param log_dir_name: Name of the subdirectory of ``app_dir``
+           in which logs should be placed
     """
     this_file = path.dirname(path.abspath(__file__))
     with open(path.join(this_file, u"resources", u"logging.yaml"), u"r") as f:

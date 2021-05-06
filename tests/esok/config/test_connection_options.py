@@ -388,8 +388,8 @@ def test_include_site_should_pass_site(user_config_file, runner):
 
 @pytest.mark.usefixtures("mock_clients")
 def test_developer_boo_boo_is_captured(runner):
-    """This happens if @connection_options and Click's context object is not set up properly,
-    before @per_connection starts.
+    """This happens if @connection_options and Click's context object is not set
+    up properly, before @per_connection starts.
     """
 
     @click.group()
