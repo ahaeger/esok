@@ -65,8 +65,8 @@ def create(client, name, mapping):
     type=click.STRING,
     metavar="HOSTNAME",
     help="Remote cluster or hostname to copy from. If no cluster with the "
-         "given name is configured, the passed value will be used as the "
-         "hostname directly.",
+    "given name is configured, the passed value will be used as the "
+    "hostname directly.",
 )
 @click.option(
     "-m",
@@ -309,7 +309,7 @@ def read(client, name, output_file, chunk_size, scroll_time):
     "--initial-backoff",
     type=click.INT,
     help="Number of seconds to wait before the first retry. Any subsequent "
-         "retries will be powers of initial-backoff * 2^retry_number",
+    "retries will be powers of initial-backoff * 2^retry_number",
     default=2,
     show_default=True,
 )

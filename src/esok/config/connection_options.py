@@ -293,7 +293,7 @@ def _patterned_hostname(config, cluster_option, sites_option):
 
     except KeyError:
         LOG.exception(
-            'Could not parse cluster hostname pattern. Pattern must include '
+            "Could not parse cluster hostname pattern. Pattern must include "
             '"{cluster}" variable, for usage with --cluster option. '
             'Optionally, "{site}" can also be defined for use with either --sites '
             'or "cluster_pattern_default_sites" configuration.'

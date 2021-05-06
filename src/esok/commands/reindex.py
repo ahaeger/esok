@@ -74,8 +74,8 @@ def reindex():
     default=0,
     show_default=True,
     help='Count of slices to use. "auto" slicing is the default, but slicing >1 only '
-         "works when reindexing indices on the same cluster. If reindexing from remote "
-         "(using -R) slices will be set to 1.",
+    "works when reindexing indices on the same cluster. If reindexing from remote "
+    "(using -R) slices will be set to 1.",
 )
 @per_connection(include_site=True)
 def start(
