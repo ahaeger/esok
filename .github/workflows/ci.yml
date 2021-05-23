@@ -41,5 +41,5 @@ jobs:
           python-version: 3.8
       - name: Install tox
         run: pip install tox
-      - name: Check manifest
-        run: tox -e manifest
+      - name: Verify package
+        run: tox -e manifest,pypi-description
