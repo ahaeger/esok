@@ -5,8 +5,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 _NOTE_: Pre-releases (< 1.0.0) can have breaking changes in a minor version bump.
 
-## Unreleased
+## [Unreleased]
 
+
+## 2021-05-24 - [0.0.1] 
 ### Added
 
 This is an incomplete list of the features that were added, in chronological order, before this tool was publicly 
@@ -41,3 +43,6 @@ released.
 - `esok --ca-certificate` option for enabling TLS with self-signed CA certificate.
 - `esok --user` option for enabling basic auth against Elasticsearch.
 - `esok --timeout` option for controlling the timeout against Elasticsearch.
+
+[unreleased]: https://github.com/ahaeger/esok/compare/0.0.1...main 
+[0.0.1]: https://github.com/ahaeger/esok/compare/0.0.0...0.0.1
