@@ -1,7 +1,7 @@
 name: Publish package
 
 on:
-  push:
+#  push:
 #    tags:
 #      - "*"
   pull_request:
@@ -22,9 +22,10 @@ jobs:
         run: |
           pip install tox
           tox -e dev
-          source .venv/bin/activate
       - name: Build sdist & wheel
-        run: python -m build --sdist --wheel .
+        run: |
+          source .venv/bin/activate
+          python -m build --sdist --wheel .
       - name: List package files
         run: ls -alh dist/
 #      - name: Upload to PyPI
