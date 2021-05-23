@@ -22,16 +22,17 @@ jobs:
         run: |
           pip install tox
           tox -e dev
-      - name: Build sdist & wheel
+      - name: Build package
         run: |
           source .venv/bin/activate
           python -m build --sdist --wheel .
       - name: List package files
-        run: ls -alh dist/
-#      - name: Upload to PyPI
-#        env:
-#          TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
-#          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
-#        run: |
-#          twine check dist/*
-#          twine upload --repository testpypi dist/*
+        run: ls -lh dist/
+      - name: Check & upload to PyPI
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+        run: |
+          source .venv/bin/activate
+          twine check dist/*
+          twine upload --repository testpypi dist/*
