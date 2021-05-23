@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 set -ex
 
-VERSION=$(sed -E -n 's/^__version__ = "([0-9]+\.[0-9]+\.[0-9]+)"$/\1/p' src/esok/__init__.py)
+git fetch --tags
 EXISTING_TAGS=$(git tag --list)
+VERSION=$(sed -E -n 's/^__version__ = "([0-9]+\.[0-9]+\.[0-9]+)"$/\1/p' src/esok/__init__.py)
 
 if [[ ! $EXISTING_TAGS =~ $VERSION ]]; then
   echo "New version detected. Pushing new tag!"
