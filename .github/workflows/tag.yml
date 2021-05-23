@@ -1,0 +1,17 @@
+name: Check & push tag
+
+on:
+  push:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  tag:
+    name: Check & push new tag
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Check & push new tag
+        run: bash .github/tag.sh
