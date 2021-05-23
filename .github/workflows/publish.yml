@@ -1,0 +1,35 @@
+name: Publish package
+
+on:
+  push:
+#    tags:
+#      - "*"
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  publish:
+    name: Build & publish package
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.6
+      - name: Install dependencies
+        run: |
+          tox -e dev
+          source .venv/bin/activate
+      - name: Build sdist & wheel
+        run: python -m build --sdist --wheel .
+      - name: List package files
+        run: ls -alh dist/
+#      - name: Upload to PyPI
+#        env:
+#          TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
+#          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+#        run: |
+#          twine check dist/*
+#          twine upload --repository testpypi dist/*

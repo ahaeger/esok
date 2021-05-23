@@ -86,5 +86,4 @@ if __name__ == "__main__":
         classifiers=CLASSIFIERS,
         install_requires=INSTALL_REQUIRES,
         entry_points=ENTRY_POINTS,
-        options={"bdist_wheel": {"universal": "1"}},
     )
