@@ -2,6 +2,8 @@
 
 A CLI for Elasticsearch.
 
+![esok](docs/esok.gif)
+
 `esok` makes it easier to work with deployments of Elasticsearch across regions/sites, by allowing you to forward 
 the same command to multiple clusters. It's also just more human-friendly than finding old HTTP-requests in your shell 
 history.
