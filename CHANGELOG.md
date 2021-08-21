@@ -6,12 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 _NOTE_: Pre-releases (< 1.0.0) can have breaking changes in a minor version bump.
 
 ## [Unreleased]
+
+
+## 2021-08-22 - [0.1.0]
 ### Added
-- `--sort` option to `esok index list` command, to specify sorting order of returned indices.
-- `--sort` option to `esok alias list` command, to specify sorting order of returned aliases.
+- `--sort` option to `esok index list` command, to specify sorting order of returned indices. (#18)
+- `--sort` option to `esok alias list` command, to specify sorting order of returned aliases. (#19)
 
 ### Fixed
-- `esok reindex start` crash when using `--remote` option.
+- `esok reindex start` crash when using `--remote` option. (#20)
 
 
 ## 2021-05-24 - [0.0.1] 
@@ -50,5 +53,6 @@ released.
 - `esok --user` option for enabling basic auth against Elasticsearch.
 - `esok --timeout` option for controlling the timeout against Elasticsearch.
 
-[unreleased]: https://github.com/ahaeger/esok/compare/0.0.1...main 
+[unreleased]: https://github.com/ahaeger/esok/compare/0.1.0...main 
+[0.1.0]: https://github.com/ahaeger/esok/compare/0.0.1...0.1.0
 [0.0.1]: https://github.com/ahaeger/esok/compare/0.0.0...0.0.1
