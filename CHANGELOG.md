@@ -10,6 +10,10 @@ _NOTE_: Pre-releases (< 1.0.0) can have breaking changes in a minor version bump
 - `--sort` option to `esok index list` command, to specify sorting order of returned indices.
 - `--sort` option to `esok alias list` command, to specify sorting order of returned aliases.
 
+### Fixed
+- `esok reindex start` crash when using `--remote` option.
+
+
 ## 2021-05-24 - [0.0.1] 
 ### Added
 
