@@ -6,7 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 _NOTE_: Pre-releases (< 1.0.0) can have breaking changes in a minor version bump.
 
 ## [Unreleased]
-
+### Added
+- `--sort` option to `esok index list` command, to specify sorting order of returned indices.
 
 ## 2021-05-24 - [0.0.1] 
 ### Added
