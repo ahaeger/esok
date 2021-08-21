@@ -18,11 +18,19 @@ def alias():
 
 
 @alias.command(name="list")
+@click.option(
+    "-s",
+    "--sort",
+    default="alias,index",
+    metavar="COLUMN",
+    show_default=True,
+    help="Comma-separated list of column names or column aliases used to sort the "
+    "response.",
+)
 @per_connection()
-def list_aliases(client):
+def list_aliases(client, sort):
     """List existing index aliases."""
-    # TODO (haeger) Sort on index name? Make it an option?
-    r = client.cat.aliases(v=True)
+    r = client.cat.aliases(v=True, s=sort)
     click.echo(r)
 
 
