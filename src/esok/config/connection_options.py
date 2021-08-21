@@ -156,7 +156,8 @@ def resolve_remote(remote, site):
     if site is None and "{site}" in config["cluster_hostname_pattern"]:
         client = _make_client(remote)
     else:
-        config = config.copy().update(
+        config = config.copy()
+        config.update(
             host_option=None, cluster_option=remote, sites_option=site
         )
         client = _create_clients(config).pop()[0]
