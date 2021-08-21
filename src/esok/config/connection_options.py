@@ -157,9 +157,7 @@ def resolve_remote(remote, site):
         client = _make_client(remote)
     else:
         config = config.copy()
-        config.update(
-            host_option=None, cluster_option=remote, sites_option=site
-        )
+        config.update(host_option=None, cluster_option=remote, sites_option=site)
         client = _create_clients(config).pop()[0]
     return client
 
